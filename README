@@ -1,0 +1,2 @@
+Небольшая программа на с++ по поиску лого на картинке, использует проход по краю и чтение пикселов. 
+`Magick++-config --cppflags --cxxflags --ldflags --libs` -lboost_filesystem-mt
