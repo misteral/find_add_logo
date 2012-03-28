@@ -78,7 +78,7 @@ try {
             	image.composite( logo, placement, OverCompositeOp );
             	image.write(image_pa.string());
 
-            } else {cout <<  *it  << " без лого" <<  '\n';}
+            } else {cout <<  *it  << " -- without logo" <<  '\n';}
           }// файл
         }
       }
