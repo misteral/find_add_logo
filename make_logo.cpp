@@ -49,6 +49,9 @@ int main( int argc, char ** argv)
 	Image v_logo(logo_pa.string()+vert_logo);
 	Image logo;
 	Geometry placement(0,0,0,0);
+	int fi_co, lo_co ;
+	fi_co = 0;
+	lo_co = 0;
 try {
     //cout << "Read images ..." << endl;
      if (fs::exists(p))    // does p actually exist?
@@ -63,6 +66,7 @@ try {
         {
             if (fs::is_regular_file(*it))
             {
+            fi_co = fi_co+1;
             fs::path	image_pa = *it;
             Image image (image_pa.string()) ;
              if (is_logo(image)){
@@ -77,10 +81,11 @@ try {
                 logo.scale(size_pa);
             	image.composite( logo, placement, OverCompositeOp );
             	image.write(image_pa.string());
-
+            	lo_co = lo_co + 1;
             } //else {cout <<  *it  << " -- without logo" <<  '\n';}
           }// файл
         }
+        cout <<  "For job = "  << fi_co <<  " -- with logo " << lo_co << '\n';
       }
     }
     else
