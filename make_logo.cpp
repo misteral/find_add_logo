@@ -50,7 +50,7 @@ int main( int argc, char ** argv)
 	Image logo;
 	Geometry placement(0,0,0,0);
 try {
-    cout << "Read images ..." << endl;
+    //cout << "Read images ..." << endl;
      if (fs::exists(p))    // does p actually exist?
     {
       if (fs::is_directory(p))        // is p is a irectory?
@@ -66,7 +66,7 @@ try {
             fs::path	image_pa = *it;
             Image image (image_pa.string()) ;
              if (is_logo(image)){
-            	cout <<  image_pa.string()  << "     is with logo" <<  '\n';
+            	//cout <<  image_pa.string()  << "     is with logo" <<  '\n';
             	Geometry size_pa = image.size();
                 size_pa.aspect(true);
             	int x = image.rows();
@@ -78,7 +78,7 @@ try {
             	image.composite( logo, placement, OverCompositeOp );
             	image.write(image_pa.string());
 
-            } else {cout <<  *it  << " -- without logo" <<  '\n';}
+            } //else {cout <<  *it  << " -- without logo" <<  '\n';}
           }// файл
         }
       }
