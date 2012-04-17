@@ -13,11 +13,29 @@ using namespace Magick;
 
 bool is_logo(Image image)
 { //надо сюда передавать изображение чтоб не читать два раза
-    Color fromimage_left, fromimage_rigth;
+    Color fromimage_left,fromimage_rigth,cen_up,cen_bot,cen_left,cen_rigth;
     int i;
+    //bool l_true, r_true;
     double intens,intens_r ;
+    cen_up = image.pixelColor(image.columns()/2, 1 );
+    cen_bot = image.pixelColor(image.columns()/2, image.rows()-1 );
+    cen_left = image.pixelColor(1, image.rows()/2 );
+    cen_rigth = image.pixelColor(image.columns()-1, image.rows()/2 );
+    //image.pixelColor(image.columns()/2, 1, "red" );
+    //image.pixelColor(image.columns()/2, image.rows()-1 , "red");
+    //image.pixelColor(1, image.rows()/2 , "red");
+    //image.pixelColor(image.columns()-1, image.rows()/2, "red" );
+    //image.write("/home/ror/image/test.jpg");
+    cout << cen_up.intensity() << " - " << cen_bot.intensity() << " - " << cen_left.intensity() << " - " << cen_rigth.intensity() <<  '\n';
+    if ((cen_up.intensity() >= 31000 and cen_up.intensity() <= 50000) or (cen_bot.intensity() >= 31000 and cen_bot.intensity() <= 50000) or (cen_left.intensity() >= 31000 and cen_left.intensity() <= 50000) or (cen_rigth.intensity() >= 31000 and cen_rigth.intensity() <= 50000)) {
     //cout << "Прочитал " << image_pa.string();
+    	//skip_count = skip_count+1;
+    	//cout << "!!!Skipped";
+    }
+    else {
     for (i=1; i<=30; ++i){
+    	//l_true = false;
+    	//r_true = false;
        fromimage_left = image.pixelColor(1, image.rows()-i );
        fromimage_rigth = image.pixelColor(image.columns()-1, i );
        intens_r = fromimage_rigth.intensity();
@@ -28,6 +46,8 @@ bool is_logo(Image image)
           // image.write( image_pa.string() ); //добавляет картинку
         	return true;
         }
+
+    }
     }
     return false;
 }
@@ -85,7 +105,7 @@ try {
             } //else {cout <<  *it  << " -- without logo" <<  '\n';}
           }// файл
         }
-        cout <<  "For job = "  << fi_co <<  " -- with logo " << lo_co << '\n';
+        cout <<  "For job = "  << fi_co <<  " -- with logo - " << lo_co << '\n';
       }
     }
     else
