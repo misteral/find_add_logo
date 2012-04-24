@@ -1,4 +1,4 @@
-CXXFLAGS =	-O2 -g -Wall -fmessage-length=0 `Magick++-config --cppflags --cxxflags --ldflags --libs` -lboost_filesystem-mt
+CXXFLAGS =	-O3 -g -Wall -fmessage-length=0 `Magick++-config --cppflags --cxxflags --ldflags --libs` -lboost_filesystem-mt
 
 OBJS =		make_logo.o
 
